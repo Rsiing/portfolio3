@@ -1,9 +1,21 @@
-
+import { useState } from 'react';
+import img1 from './assets/gymsite.png'
+import img2 from './assets/portfolio.png'
+import img3 from './assets/test.png'
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
 function Hero() {
-    const numbers = ["welcome",2,3,4,"Hey Love"];
-    const listItems = numbers.map((number) =>
-    <li>{number}</li>);
+    const images = [img1,img2,img3];
+   
+
+    const [index, setIndex] = useState(0);
+    const length = images.length;
+    const handlePrevious = () => {
+      setIndex(index ===  0 ? length - 1 : index - 1);
+    };
+    const handleNext = () => {
+      setIndex(index === length - 1 ? 0 : index + 1);
+    };
    
   return (
     <div className="py-10">
@@ -18,8 +30,11 @@ function Hero() {
             </p>
         </div>
         <div className="bg-slate-300 rounded-xl w-full h-[300px]"></div>
-        <div className="border-4 w-full col-span-2 flex flex-row gap-4">
-            <ul>{listItems}</ul>
+        <div className="justify-center w-full col-span-2 flex flex-row items-center gap-4">
+        
+        <button className='hover:-translate-x-2  h-fit flex hover:scale-110 duration-300 cursor-pointer' onClick={handleNext}><FaArrowLeft className='size-10'/></button>
+        <img src={images[index]} alt={ `Slide ${index}`} className='h-[300px] w-[600px] rounded-2xl' />
+        <button className='hover:translate-x-2  h-fit flex hover:scale-110 duration-300 cursor-pointer' onClick={handlePrevious}><FaArrowRight className='size-10'/></button>
         </div>
     </div>
     </div>
