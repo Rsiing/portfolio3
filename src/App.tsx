@@ -8,8 +8,8 @@ function App() {
 
 
   return (
-    <div className='bg-radial from-blue-100 via-blue-200 to-blue-300 w-full h-screen items-center flex justify-center'>
-     <div className='w-[80%] h-[800px] px-8 py-4 bg-gray-700 rounded-2xl'>
+    <div className='bg-radial cursor-default from-blue-100 to-blue-500 w-full h-screen items-center flex justify-center'>
+     <div className='w-[80%] h-[800px] px-8 py-4 bg-black shadow-2xl rounded-2xl'>
       <Navbar/>
       <Hero/>
      </div>

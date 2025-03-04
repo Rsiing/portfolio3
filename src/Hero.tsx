@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState} from 'react';
 import img1 from './assets/gymsite.png'
 import img2 from './assets/portfolio.png'
 import img3 from './assets/test.png'
@@ -11,11 +11,23 @@ function Hero() {
     const [index, setIndex] = useState(0);
     const length = images.length;
     const handlePrevious = () => {
-      setIndex(index ===  0 ? length - 1 : index - 1);
+      setFadeIn(false);
+      setTimeout(() => {
+        setIndex((prevIndex) => (prevIndex === 0 ? length - 1 : prevIndex - 1));
+        setFadeIn(true);
+      }, 200);
     };
     const handleNext = () => {
-      setIndex(index === length - 1 ? 0 : index + 1);
+      setFadeIn(false);
+    setTimeout(() => {
+      setIndex((prevIndex) => (prevIndex === length - 1 ? 0 : prevIndex + 1));
+      setFadeIn(true);
+    }, 200);
     };
+
+    const [fadeIn, setFadeIn] = useState(true);
+
+   
    
   return (
     <div className="py-10">
@@ -33,7 +45,8 @@ function Hero() {
         <div className="justify-center w-full col-span-2 flex flex-row items-center gap-4">
         
         <button className='hover:-translate-x-2  h-fit flex hover:scale-110 duration-300 cursor-pointer' onClick={handleNext}><FaArrowLeft className='size-10'/></button>
-        <img src={images[index]} alt={ `Slide ${index}`} className='h-[300px] w-[600px] rounded-2xl' />
+        <img src={images[index]} alt={ `Slide ${index}`} className='h-[300px] w-[600px] duration-300 rounded-2xl' 
+        style={{opacity: fadeIn ? 1 : 0}}/>
         <button className='hover:translate-x-2  h-fit flex hover:scale-110 duration-300 cursor-pointer' onClick={handlePrevious}><FaArrowRight className='size-10'/></button>
         </div>
     </div>
